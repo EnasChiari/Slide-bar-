@@ -1,0 +1,215 @@
+<!--
+  ===========================================================================
+  TEMPLATE DO MENU LATERAL — TubaroPédia
+  ===========================================================================
+  Como usar em uma nova página:
+
+  1) No <head> da página, garanta que exista:
+       <link rel="stylesheet" href="slidebar.css">
+     (e também o seu <style> com as variáveis --navy-950, --blue-accent etc,
+      já que o slidebar.css usa essas variáveis)
+
+  2) Cole o BLOCO 1 logo depois da tag <body>.
+
+  3) Dentro do BLOCO 1, ajuste:
+       - qual <a>/<div class="nav-item"> deve ter a classe "active"
+         (a página em que o usuário está)
+       - os href="..." dos itens de menu que já viram páginas prontas
+         (catalogo.html, familias.html, especie.html etc.)
+
+  4) Cole o BLOCO 2 (script) antes do </body>, DEPOIS de já ter no HTML
+     os elementos #toast e #modalOverlay (o bloco 2 inclui os dois).
+
+  5) Se a página tiver busca própria (ex: filtrar uma tabela ou grade),
+     adapte a parte final do script (função de "input" do #searchInput)
+     para procurar nos elementos daquela página.
+  ===========================================================================
+-->
+
+<!-- ======================= BLOCO 1: HTML ======================= -->
+
+<input type="checkbox" id="menu-toggle">
+<label for="menu-toggle" class="overlay"></label>
+
+<div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark img-placeholder">
+        <span class="placeholder-label">Logo</span>
+        <img src="icon/Logo.png" alt="Logo TubaroPédia" onload="this.style.display='block'; this.previousElementSibling.style.display='none';">
+      </div>
+      <div>
+        <h1>TubaroPédia</h1>
+        <p>A enciclopédia dos tubarões</p>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <!-- Marque como "active" (classe nav-item active) apenas o item da página atual -->
+      <a href="index.html" class="nav-item"><span class="ic img-placeholder"><img src="imagens/icone-inicio.png" alt="" onload="this.style.display='block';"></span>Página principal</a>
+      <a href="catalogo.html" class="nav-item"><span class="ic img-placeholder"><img src="imagens/icone-todas-especies.png" alt="" onload="this.style.display='block';"></span>Todas as espécies</a>
+      <a href="familias.html" class="nav-item"><span class="ic img-placeholder"><img src="imagens/icone-familias.png" alt="" onload="this.style.display='block';"></span>Famílias</a>
+      <div class="nav-item" data-action="toast:Seção de Gêneros em construção."><span class="ic img-placeholder"><img src="imagens/icone-generos.png" alt="" onload="this.style.display='block';"></span>Gêneros</div>
+      <div class="nav-item" data-action="toast:Seção de Anatomia em construção."><span class="ic img-placeholder"><img src="imagens/icone-anatomia.png" alt="" onload="this.style.display='block';"></span>Anatomia</div>
+      <div class="nav-item" data-action="toast:Seção de Habitat em construção."><span class="ic img-placeholder"><img src="imagens/icone-habitat.png" alt="" onload="this.style.display='block';"></span>Habitat</div>
+      <div class="nav-item" data-action="toast:Seção de Comportamento em construção."><span class="ic img-placeholder"><img src="imagens/icone-comportamento.png" alt="" onload="this.style.display='block';"></span>Comportamento</div>
+      <div class="nav-item" data-action="toast:Seção de Conservação em construção."><span class="ic img-placeholder"><img src="imagens/icone-conservacao.png" alt="" onload="this.style.display='block';"></span>Conservação</div>
+      <div class="nav-item" data-action="toast:Seção de Fósseis em construção."><span class="ic img-placeholder"><img src="imagens/icone-fosseis.png" alt="" onload="this.style.display='block';"></span>Fósseis</div>
+      <div class="nav-item" data-action="toast:Seção de Notícias em construção."><span class="ic img-placeholder"><img src="imagens/icone-noticias.png" alt="" onload="this.style.display='block';"></span>Notícias</div>
+      <div class="nav-item" data-action="toast:Seção de Bibliografia em construção."><span class="ic img-placeholder"><img src="icon/bibliografia.png" alt="" onload="this.style.display='block';"></span>Bibliografia</div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Ferramentas</div>
+      <div class="nav-item" data-action="random-article"><span class="ic img-placeholder"><img src="icon/aleatório.png" alt="" onload="this.style.display='block';"></span>Páginas aleatórias</div>
+      <div class="nav-item" data-action="toast:Nenhuma mudança recente registrada ainda."><span class="ic img-placeholder"><img src="imagens/icone-mudancas.png" alt="" onload="this.style.display='block';"></span>Mudanças recentes</div>
+      <div class="nav-item" data-action="toast:Página de testes em construção."><span class="ic img-placeholder"><img src="imagens/icone-testes.png" alt="" onload="this.style.display='block';"></span>Página de testes</div>
+      <div class="nav-item" data-action="toast:Central de ajuda em construção."><span class="ic img-placeholder"><img src="icon/ajuda.png" alt="" onload="this.style.display='block';"></span>Ajuda</div>
+    </div>
+
+    <div class="social-row">
+      <span class="ic img-placeholder"><img src="imagens/icone-social-1.png" alt="" onload="this.style.display='block';"></span>
+      <span class="ic img-placeholder"><img src="imagens/icone-social-2.png" alt="" onload="this.style.display='block';"></span>
+      <span class="ic img-placeholder"><img src="imagens/icone-social-3.png" alt="" onload="this.style.display='block';"></span>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN (troque o conteúdo interno pelo da página) ================= -->
+  <div>
+    <header class="topbar">
+      <div class="title">
+        <h2>TubaroPédia</h2>
+        <p>A enciclopédia dos tubarões</p>
+      </div>
+      <form class="search-box" id="searchForm">
+        <span class="icon-placeholder img-placeholder"><img src="imagens/icone-pesquisa.png" alt="" onload="this.style.display='block';"></span>
+        <input id="searchInput" type="text" placeholder="Pesquisar na TubaroPédia" autocomplete="off" style="border:none;background:transparent;outline:none;font-family:inherit;font-size:0.86rem;color:var(--ink);flex:1;">
+      </form>
+      <div class="topbar-actions">
+        <span class="item" data-action="open-modal:contribuir"><span class="icon-placeholder img-placeholder"><img src="imagens/icone-contribuir.png" alt="" onload="this.style.display='block';"></span>Contribuir</span>
+        <span class="item" data-action="open-modal:entrar"><span class="icon-placeholder img-placeholder"><img src="imagens/icone-entrar.png" alt="" onload="this.style.display='block';"></span>Entrar</span>
+        <label for="menu-toggle" class="menu-ic" aria-label="Abrir menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </label>
+      </div>
+    </header>
+
+    <!-- ⬇⬇⬇ AQUI ENTRA O CONTEÚDO PRÓPRIO DE CADA PÁGINA ⬇⬇⬇ -->
+
+
+  </div><!-- fecha a div MAIN -->
+</div><!-- fecha .shell -->
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<!-- ======================= BLOCO 2: JAVASCRIPT ======================= -->
+<script>
+(function(){
+  const toastEl = document.getElementById('toast');
+  let toastTimer;
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 2600);
+  }
+
+  const overlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  function closeModal(){
+    overlay.classList.remove('show');
+    modalBox.innerHTML = '';
+  }
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+
+  function openFormModal(kind){
+    const isContribute = kind === 'contribuir';
+    modalBox.innerHTML =
+      '<button class="modal-close" data-close>✕</button>' +
+      '<h3>'+(isContribute ? 'Contribuir com a TubaroPédia' : 'Entrar')+'</h3>' +
+      '<p class="modal-sub">'+(isContribute ? 'Envie uma sugestão de edição ou novo conteúdo. Nossa equipe revisa antes da publicação.' : 'Acesse sua conta para editar e acompanhar páginas.')+'</p>' +
+      '<form id="modalForm">' +
+        (isContribute
+          ? '<label>Seu nome</label><input type="text" required>' +
+            '<label>E-mail</label><input type="email" required>' +
+            '<label>Sugestão</label><textarea rows="3" required></textarea>'
+          : '<label>E-mail</label><input type="email" required>' +
+            '<label>Senha</label><input type="password" required>'
+        ) +
+        '<button type="submit" class="modal-submit">'+(isContribute ? 'Enviar sugestão' : 'Entrar')+'</button>' +
+      '</form>';
+    overlay.classList.add('show');
+    document.getElementById('modalForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      closeModal();
+      showToast(isContribute ? 'Obrigado! Sua sugestão foi enviada para revisão.' : 'Login em construção — em breve disponível.');
+    });
+  }
+
+  function setActiveNav(el){
+    if(!el.classList.contains('nav-item')) return;
+    document.querySelectorAll('.nav-item.active').forEach(n=>n.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  document.addEventListener('click', function(e){
+    const closeBtn = e.target.closest('[data-close]');
+    if(closeBtn){ closeModal(); return; }
+
+    const el = e.target.closest('[data-action]');
+    if(!el) return;
+    const action = el.getAttribute('data-action');
+
+    if(action.startsWith('href:')){
+      window.location.href = action.slice(5);
+    } else if(action.startsWith('open-modal:')){
+      openFormModal(action.split(':')[1]);
+    } else if(action.startsWith('toast:')){
+      showToast(action.slice(6));
+      if(el.classList.contains('nav-item')) setActiveNav(el);
+    } else if(action === 'random-article'){
+      // Se a página tiver acesso a ESPECIES (especies-data.js) e a função
+      // openArticleModal, chame-a aqui. Caso contrário, adapte esta ação.
+      showToast('Recurso de página aleatória precisa do especies-data.js nesta página.');
+    }
+  });
+
+  // Fecha modal com Esc
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+
+  // Busca — funciona sozinha, mas o QUE ela filtra depende de cada página.
+  // Ajuste os seletores abaixo para os elementos daquela página
+  // (ex: '.fam-table tbody tr', '.article-card', '.especie-card' etc.)
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  searchForm.addEventListener('submit', function(e){ e.preventDefault(); });
+
+  function normalize(s){
+    return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  }
+
+  searchInput.addEventListener('input', function(){
+    const q = normalize(searchInput.value.trim());
+
+    // Exemplo — troque '.item-buscavel' pela classe real dos cards/linhas da página
+    document.querySelectorAll('.item-buscavel').forEach(item=>{
+      const text = normalize(item.textContent);
+      item.style.display = (!q || text.includes(q)) ? '' : 'none';
+    });
+  });
+})();
+</script>
